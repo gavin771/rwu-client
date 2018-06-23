@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 // COMPONENTS
 import Home from "./home";
+import Login from "./login";
+import Register from "./register";
 
 class App extends Component {
   render() {
@@ -10,6 +12,8 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Home}></Route>
+          <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/register" component={Register}></Route>
         </div>
       </BrowserRouter>
     );
