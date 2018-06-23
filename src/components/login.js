@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Button} from 'react-materialize';
-import * as userActions from '../actions/userActions';
+import {userActions} from '../actions/userActions';
 import News from './news';
 import Header from './header';
-import Register from './register'
 
-const URL_LOGINPAGE = 'http://localhost:3000/login';
+const URL_LOGINPAGE = 'http://localhost:3001/loginandregister';
+
 
 class Login extends Component {
 
@@ -39,7 +39,7 @@ class Login extends Component {
     }
 
     handleLogin = () => {
-        userActions.login(this.state.username,this.state.password)  
+        userActions.login(this.state.username,this.state.password)
     }
 
     handleLoginWithFacebook = () => {
@@ -48,6 +48,18 @@ class Login extends Component {
 
     handleLoginWithGoogle = () => {
         userActions.loginGoogle()
+    }
+
+    handleRegistration = () => {
+        userActions.register(this.state.username,this.state.password) 
+    }
+
+    handleRegistrationWithFacebook = () => {
+        userActions.registerFacebook()
+    }
+
+    handleRegistrationWithGoogle = () => {
+        userActions.registerGoogle()
     }
 
     render() {
@@ -72,18 +84,18 @@ class Login extends Component {
                             <div className="z-depth-1 grey lighten-4 row">
                             <form className="col s12 login-form">
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='email' name='username' id='username' onChange={this.handleEmailChange}/>
+                                    <input className='validate' type='email' name='username' id='username' required="required" onChange={this.handleEmailChange}/>
                                     <label className='username'>Enter your email</label>
                                 </div>
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='password' name='password' id='password' onChange={this.handlePasswordChange }/>
+                                    <input className='validate' type='password' name='password' id='password' required="required" onChange={this.handlePasswordChange }/>
                                     <label className='password'>Enter your password</label>
                                 </div>
                                 <br />
                                 <center>
                                     <div className="login-page-buttons">
                                         <div className='login-button-user'>
-                                        <Button type='submit' id="user" name='btn_login' className='waves-effect waves-light user' onClick={this.handleLogin}>Login</Button>
+                                        <Button type='submit' id="user" name='btn_login' className='waves-effect waves-light user' onClick={this.handleLogin()}>Login</Button>
                                         <Button id="skip" waves='light' node='a' href='/dashboard'> 
                                         Skip
                                         </Button>
@@ -103,7 +115,38 @@ class Login extends Component {
                             </div>
                         </div>
                         <div id="test2" className="col s12">
-                            <Register/>
+                            <div className="z-depth-1 grey lighten-4 row">
+                            <form className="col s12 register-form">
+                                <div className='input-field col s12'>
+                                    <input className='validate' type='email' name='username' id='username' required="required" onChange={this.handleEmailChange}/>
+                                    <label className='username'>Enter your email</label>
+                                </div>
+                                <div className='input-field col s12'>
+                                    <input className='validate' type='password' name='password' id='password' required="required" onChange={this.handlePasswordChange }/>
+                                    <label className='password'>Enter your password</label>
+                                </div>
+                                <br />
+                                <center>
+                                    <div className="register-page-buttons">
+                                        <div className='register-button-user'>
+                                        <Button type='submit' id="user" name='btn_register' className='waves-effect waves-light user' onClick={this.handleRegistration()}>Register</Button>
+                                        <Button id="skip" waves='light' node='a' href='/dashboard'> 
+                                        Skip
+                                        </Button>
+                                        </div>
+                                        <h6 className="registerOr"><span>OR</span></h6>
+                                        <div className='register-button-facebook'>
+                                        <Button type='submit' id="facebook" name='btn_register_facebook' className='waves-effect waves-light btn social facebook' onClick={this.handleRegistrationWithFacebook}>
+                                        <i className="fa fa-facebook"></i> Register with Facebook</Button>
+                                        </div>
+                                        <div className='register-button-google'>
+                                        <Button type='submit' id="google" name='btn_register_google' className='waves-effect waves-light google-button btn social google' onClick={this.handleRegistrationWithGoogle}> 
+                                        <i className="fa fa-google"></i> Register with Google</Button>
+                                        </div>
+                                    </div>
+                                </center>
+                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

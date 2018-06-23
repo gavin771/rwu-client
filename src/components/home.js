@@ -3,7 +3,7 @@ import {Button} from 'react-materialize';
 import reactiv from "../images/logo/reactiv.png";
 import worldCup from "../images/logo/worldcup2018.png";
 
-const URL_HOME = 'http://localhost:3000/home';
+const URL_HOME = 'http://localhost:3001/home';
 
 class Home extends Component {
 
@@ -37,11 +37,8 @@ class Home extends Component {
                     </h2>
                 </div>
                 <div className="homepage-buttons center-align">
-                    <Button id="login" waves='light' node='a' href='/login'> 
-                        Login
-                    </Button>
-                    <Button id="register" waves='light' node='a' href='/register'> 
-                        Register
+                    <Button id="login" waves='light' node='a' href='/loginandregister'> 
+                        Login/Register
                     </Button>
                     <Button id="skip" waves='light' node='a' href='/dashboard'> 
                         Skip
