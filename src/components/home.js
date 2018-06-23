@@ -40,10 +40,10 @@ class Home extends Component {
                     <Button id="login" waves='light' node='a' href='/login'> 
                         Login
                     </Button>
-                    <Button id="register" waves='light' node='a' href='/login'> 
+                    <Button id="register" waves='light' node='a' href='/register'> 
                         Register
                     </Button>
-                    <Button id="skip" waves='light' node='a' href='/login'> 
+                    <Button id="skip" waves='light' node='a' href='/dashboard'> 
                         Skip
                     </Button>
                 </div>
