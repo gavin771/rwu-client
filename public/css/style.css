@@ -1,0 +1,17 @@
+.world-cup-logo img{
+    height:25%;
+    width:25%;
+    position:relative;
+    float:right;
+}
+
+.reactiv-logo img{
+    height:25%;
+    width:25%;
+    position:relative;
+    float:left;
+}
+
+.homepage-buttons #login,#register,#skip{
+    margin:10px;
+  }
