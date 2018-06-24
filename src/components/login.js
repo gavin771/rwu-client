@@ -39,7 +39,7 @@ class Login extends Component {
         this.setState({password: e.target.value});
     }
 
-    handleResponse(res){
+    handleLoginResponse(res){
         if(res.status === 200||res.status === 201){
             this.props.history.push("/dashboard")
         }else{
@@ -48,10 +48,19 @@ class Login extends Component {
         }
     }
 
+    handleRegisterResponse(res){
+        if(res.status === 200||res.status === 201){
+            this.props.history.push("/dashboard")
+        }else{
+            console.log('Fail' +res.statusMessage)
+            //this.setState({errorR: res.statusMessage})
+        }
+    }
+
     handleLogin = () => {
         const res = userActions.login(this.state.username,this.state.password);
 
-        this.handleResponse(res)
+        this.handleLoginResponse(res)
     }
 
     handleLoginWithFacebook = () => {
@@ -63,7 +72,9 @@ class Login extends Component {
     }
 
     handleRegistration = () => {
-        userActions.register(this.state.username,this.state.password)
+        const res = userActions.register(this.state.username,this.state.password)
+
+        this.handleRegisterResponse(res)
     }
 
     handleRegistrationWithFacebook = () => {
@@ -133,6 +144,10 @@ class Login extends Component {
                         <div id="test2" className="col s12">
                             <div className="z-depth-1 grey lighten-4 row">
                             <form className="col s12 register-form">
+                                {this.state.errorR &&
+                                <div className="errorR">
+                                    {this.state.errorR}
+                                </div>}
                                 <div className='input-field col s12'>
                                     <input className='validate' type='email' name='username' id='username' required="required" onChange={this.handleEmailChange}/>
                                     <label className='username'>Enter your email</label>
