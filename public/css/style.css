@@ -38,7 +38,7 @@ HomePage
 Login Page
 **/
 
-.login-page-buttons #user,#facebook,#google{
+.login-page-buttons #user,#facebook,#google,#user-1,#facebook-1,#google-1{
     margin:10px;
 }
 

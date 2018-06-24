@@ -24,7 +24,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="homepage">
+            <div className="homepage container">
                 <div className="world-cup-logo card-image">
                     <img src={worldCup} alt="world-cup"/>
                 </div>
