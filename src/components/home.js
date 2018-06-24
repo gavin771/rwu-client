@@ -38,10 +38,18 @@ class Home extends Component {
                     </h2>
                 </div>
                 <div className="homepage-buttons center-align">
+<<<<<<< HEAD
                     <Button id="login" waves='light' node='a' href='/loginandregister'> 
                         Login/Register
+=======
+                    <Button id="login" waves='light' node='a' href='/login'> 
+                        Login
                     </Button>
-                    <Button id="skip" waves='light' node='a' href='/login'> 
+                    <Button id="register" waves='light' node='a' href='/register'> 
+                        Register
+>>>>>>> caf28a1b153f46fbce40cf97a955cda8ac36593e
+                    </Button>
+                    <Button id="skip" waves='light' node='a' href='/dashboard'> 
                         Skip
                     </Button>
                 </div>
