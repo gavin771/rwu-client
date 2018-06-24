@@ -15,3 +15,7 @@
 .homepage-buttons #login,#register,#skip{
     margin:10px;
   }
+
+.appTitle{
+    padding-top: 350px;
+}
