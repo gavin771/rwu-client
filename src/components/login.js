@@ -4,9 +4,6 @@ import {userActions} from '../actions/userActions';
 import News from './news';
 import Header from './header';
 
-const URL_LOGINPAGE = 'http://localhost:3001/loginandregister';
-
-
 class Login extends Component {
 
     constructor(props){
@@ -16,19 +13,9 @@ class Login extends Component {
             login:'',
             username:'',
             password:'',
-            error:''
+            error:'',
+            errorR:''
         }
-    }
-
-    componentDidMount() {
-        fetch(URL_LOGINPAGE, { method: 'GET'})
-        .then(json => {
-            this.setState({
-                login:json,
-                username:json,
-                password:json
-            })
-        })
     }
 
     handleEmailChange =(e) =>{
@@ -39,28 +26,28 @@ class Login extends Component {
         this.setState({password: e.target.value});
     }
 
-    handleLoginResponse(res){
+    handleResponse(res){
         if(res.status === 200||res.status === 201){
-            this.props.history.push("/dashboard")
+            this.props.history.push('/dashboard')
         }else{
             console.log('Fail' +res.statusMessage)
             this.setState({error: res.statusMessage})
         }
     }
 
-    handleRegisterResponse(res){
+    /*handleRegisterResponse(res){
         if(res.status === 200||res.status === 201){
             this.props.history.push("/dashboard")
         }else{
             console.log('Fail' +res.statusMessage)
-            //this.setState({errorR: res.statusMessage})
+            this.setState({errorR: res.statusMessage})
         }
-    }
+    }*/
 
     handleLogin = () => {
         const res = userActions.login(this.state.username,this.state.password);
 
-        this.handleLoginResponse(res)
+        this.handleResponse(res)
     }
 
     handleLoginWithFacebook = () => {
@@ -74,7 +61,7 @@ class Login extends Component {
     handleRegistration = () => {
         const res = userActions.register(this.state.username,this.state.password)
 
-        this.handleRegisterResponse(res)
+        this.handleResponse(res)
     }
 
     handleRegistrationWithFacebook = () => {
@@ -87,85 +74,85 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="login-news row">
-                <div className="login-news-header">
+            <div className='login-news row'>
+                <div className='login-news-header'>
                     <Header/>
                 </div>
-                <div className="newsComponent">
+                <div className='newsComponent'>
                     <News/>
                 </div>
                 <br/>
-                <div className="loginPage">
-                    <div className="row">
-                        <div className="col s12">
+                <div className='loginPage'>
+                    <div className='row'>
+                        <div className='col s12'>
                             <ul className="tabs">
-                            <li className="tab col s3"><a href="#test1">Login</a></li>
-                            <li className="tab col s3"><a href="#test2">Register</a></li>
+                            <li className='tab col s3'><a href='#test1'>Login</a></li>
+                            <li className='tab col s3'><a href='#test2'>Register</a></li>
                             </ul>
                         </div>
-                        <div id="test1" className="col s12">
+                        <div id='test1' className='col s12'>
                             <div className="z-depth-1 grey lighten-4 row">
-                            <form className="col s12 login-form">
+                            <form className='col s12 login-form'>
                                 {this.state.error &&
-                                <div className="error">
+                                <div className='error'>
                                     {this.state.error}
                                 </div>}
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='email' name='username' id='username-1' required="required" onChange={this.handleEmailChange}/>
+                                    <input className='validate' type='email' name='username' id='username-1' required='required' onChange={this.handleEmailChange}/>
                                     <label className='username'>Enter your email</label>
                                 </div>
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='password' name='password' id='password-1' required="required" onChange={this.handlePasswordChange }/>
+                                    <input className='validate' type='password' name='password' id='password-1' required='required' onChange={this.handlePasswordChange }/>
                                     <label className='password'>Enter your password</label>
                                 </div>
                                 <br />
                                 <center>
-                                    <div className="login-page-buttons">
+                                    <div className='login-page-buttons'>
                                         <div className='login-button-user'>
-                                        <Button type='submit' id="user-1" name='btn_login' className='waves-effect waves-light user' onClick={this.handleLogin}>Login</Button>
+                                        <Button type='submit' id='user-1' name='btn_login' className='waves-effect waves-light user' onClick={this.handleLogin}>Login</Button>
                                         <Button id="skip" waves='light' node='a' href='/dashboard'> 
                                         Skip
                                         </Button>
                                         </div>
-                                        <h6 className="loginOr"><span>OR</span></h6>
+                                        <h6 className='loginOr'><span>OR</span></h6>
                                         <div className='login-button-facebook'>
-                                        <Button type='submit' id="facebook-1" name='btn_login_facebook' className='waves-effect waves-light btn social facebook' onClick={this.handleLoginWithFacebook}>
+                                        <Button type='submit' id='facebook-1' name='btn_login_facebook' className='waves-effect waves-light btn social facebook' onClick={this.handleLoginWithFacebook}>
                                         <i className="fa fa-facebook"></i> Log In with Facebook</Button>
                                         </div>
                                         <div className='login-button-google'>
-                                        <Button type='submit' id="google-1" name='btn_login_google' className='waves-effect waves-light google-button btn social google' onClick={this.handleLoginWithGoogle}> 
-                                        <i className="fa fa-google"></i> Log In with Google</Button>
+                                        <Button type='submit' id='google-1' name='btn_login_google' className='waves-effect waves-light google-button btn social google' onClick={this.handleLoginWithGoogle}> 
+                                        <i className='fa fa-google'></i> Log In with Google</Button>
                                         </div>
                                     </div>
                                 </center>
                             </form>
                             </div>
                         </div>
-                        <div id="test2" className="col s12">
-                            <div className="z-depth-1 grey lighten-4 row">
-                            <form className="col s12 register-form">
-                                {this.state.errorR &&
-                                <div className="errorR">
-                                    {this.state.errorR}
+                        <div id='test2' className='col s12'>
+                            <div className='z-depth-1 grey lighten-4 row'>
+                            <form className='col s12 register-form'>
+                                {this.state.error &&
+                                <div className='error'>
+                                    {this.state.error}
                                 </div>}
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='email' name='username' id='username' required="required" onChange={this.handleEmailChange}/>
+                                    <input className='validate' type='email' name='username' id='username' required='required' onChange={this.handleEmailChange}/>
                                     <label className='username'>Enter your email</label>
                                 </div>
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='password' name='password' id='password' required="required" onChange={this.handlePasswordChange }/>
+                                    <input className='validate' type='password' name='password' id='password' required='required' onChange={this.handlePasswordChange }/>
                                     <label className='password'>Enter your password</label>
                                 </div>
                                 <br />
                                 <center>
-                                    <div className="register-page-buttons">
+                                    <div className='register-page-buttons'>
                                         <div className='register-button-user'>
-                                        <Button type='submit' id="user" name='btn_register' className='waves-effect waves-light user' onClick={this.handleRegistration()}>Register</Button>
+                                        <Button type='submit' id="user" name='btn_register' className='waves-effect waves-light user' onClick={this.handleRegistration}>Register</Button>
                                         <Button id="skip" waves='light' node='a' href='/dashboard'> 
                                         Skip
                                         </Button>
                                         </div>
-                                        <h6 className="registerOr"><span>OR</span></h6>
+                                        <h6 className='registerOr'><span>OR</span></h6>
                                         <div className='register-button-facebook'>
                                         <Button type='submit' id="facebook" name='btn_register_facebook' className='waves-effect waves-light btn social facebook' onClick={this.handleRegistrationWithFacebook}>
                                         <i className="fa fa-facebook"></i> Register with Facebook</Button>
