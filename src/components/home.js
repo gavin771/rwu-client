@@ -3,8 +3,6 @@ import {Button} from 'react-materialize';
 import reactiv from "../images/logo/reactiv.png";
 import worldCup from "../images/logo/worldcup2018.png";
 
-const URL_HOME = 'http://localhost:3000/home';
-
 class Home extends Component {
 
     constructor(props){
@@ -13,13 +11,6 @@ class Home extends Component {
         this.state = {
             home:''
         }
-    }
-
-    componentDidMount() {
-        fetch(URL_HOME, { method: 'GET'})
-        .then(json => {
-            this.setState({home:json})
-        })
     }
 
     render() {
